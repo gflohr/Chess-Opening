@@ -16,6 +16,6 @@ package Chess::OpeningBook::Polyglot;
 
 use common::sense;
 
-use Locale::TextDomain qw(com.cantanea.Chess-OpeningBook-Polyglot);
+use base 'Chess::OpeningBook';
 
 1;
