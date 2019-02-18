@@ -37,17 +37,6 @@ my %pieces = (
 	K => 11,
 );
 
-sub stringify_key($) {
-        my @bytes = unpack 'C*', shift;
-
-        my $retval = '0x';
-        foreach my $byte (@bytes) {
-                $retval .= sprintf '%02x', $byte;
-        }
-
-        return $retval;
-}
-
 sub new {
 	my ($class, $filename) = @_;
 
@@ -87,6 +76,10 @@ sub lookupFEN {
 	}
 
 	return $entry;
+}
+
+sub numberOfEntries {
+	shift->{__num_entries};
 }
 
 sub _findKey {
