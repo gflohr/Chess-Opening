@@ -840,8 +840,6 @@ my @test_cases = (
 	},
 );
 
-is $book->numberOfEntries, 112;
-
 foreach my $tc (@test_cases) {
 	my $fen = $tc->{fen};
 	my $book_entry = Chess::OpeningBook::Entry->new($fen);
@@ -851,8 +849,8 @@ foreach my $tc (@test_cases) {
 	}
 
 	my $entry = $book->lookupFEN($fen);
-	ok $book_entry, $fen;
-	ok $book_entry->isa('Chess::OpeningBook::Entry');
+	ok $entry, $fen;
+	ok $entry->isa('Chess::OpeningBook::Entry');
 	$tc->{got} = $entry;
 	$tc->{wanted} = $book_entry;
 	is_deeply $entry, $book_entry, $fen;

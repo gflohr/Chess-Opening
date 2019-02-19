@@ -78,69 +78,47 @@ sub lookupFEN {
 	return $entry;
 }
 
-sub numberOfEntries {
-	shift->{__num_entries};
-}
-
+# Do a binary search in the file for the requested position.
+# Using variations of the binary search like interpolation search or the
+# newer adaptive search or hybrid search 
+# (https://arxiv.org/ftp/arxiv/papers/1708/1708.00964.pdf) is less performant
+# because it involves significantly more disk access.
+# This method returns a range of matching records.
 sub _findKey {
 	my ($self, $key) = @_;
 
-	return -1 if !$self->{__num_entries};
+	return if !$self->{__num_entries};
 
-	my $lower = 0;
-	my $lower32 = 0x00000000;
-	my $upper = $self->{__num_entries} - 1;
-	my $upper32 = 0xffffffff;
-	my $key32 = int((unpack 'N', $key));
+	my $left = 0;
+	my $right = $self->{__num_entries};
 
-	my $entry_key;
-	my $try = int($key32 / $upper32 * $upper);
-	while (1) {
-		$entry_key = $self->__getEntryKey($try);
-
-		last if $key eq $entry_key;
-
-		# Narrow the search.
-		my $got32 = int((unpack 'N', $entry_key));
-		if ($got32 < $key32) {
-			last if $lower == $try;
-			$lower = $try;
-			$lower32 = $got32;
-		} elsif ($got32 > $key32) {
-			last if $upper == $try;
-			$upper = $try;
-			$upper32 = $got32;
-		}
-		last if $upper == $lower;
-		$try = int($lower + ($key32 - $lower32) * ($upper - $lower) / ($upper32 - $lower32));
-	}
-
-	if ($key ne $entry_key) {
-		while ($entry_key gt $key && --$try >= $lower) {
-			# Search backwards.
-			$entry_key = $self->__getEntryKey($try);
-			last if $key le $entry_key;
-		}
-		while ($entry_key lt $key && ++$try <= $upper) {
-			# Search forward.
-			$entry_key = $self->__getEntryKey($try);
-			last if $key ge $entry_key;
+	my $found = '';
+	my $mid;
+	while ($left < $right) {
+		$mid = $left + (($right - $left) >> 1);
+		$found = $self->__getEntryKey($mid);
+		if ($found gt $key) {
+			$right = $right == $mid ? $mid - 1 : $mid;
+		} elsif ($found lt $key) {
+			$left = $left == $mid ? $mid + 1 : $mid;
+		} else {
+			last;
 		}
 	}
 
 	# Found?
-	return if $key ne $entry_key;
+	return if $key ne $found;
 
-	my $first = $try;
-	my $last = $try;
-	while ($first - 1 >= $lower) {
-		$entry_key = $self->__getEntryKey($first - 1);
-		last if $entry_key ne $key;
+	my $first = $mid;
+	my $last = $mid;
+	while ($first - 1 >= 0) {
+		$found = $self->__getEntryKey($first - 1);
+		last if $found ne $key;
 		--$first;
 	}
-	while ($last + 1 <= $upper) {
-		$entry_key = $self->__getEntryKey($last + 1);
-		last if $entry_key ne $key;
+	while ($last + 1 < $self->{__num_entries}) {
+		$found = $self->__getEntryKey($last + 1);
+		last if $found ne $key;
 		++$last;
 	}
 
