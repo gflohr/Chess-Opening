@@ -103,9 +103,11 @@ sub _findKey {
 		# Narrow the search.
 		my $got32 = int((unpack 'N', $entry_key));
 		if ($got32 < $key32) {
+			last if $lower == $try;
 			$lower = $try;
 			$lower32 = $got32;
 		} elsif ($got32 > $key32) {
+			last if $upper = $try;
 			$upper = $try;
 			$upper32 = $got32;
 		}

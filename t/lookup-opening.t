@@ -842,7 +842,6 @@ my @test_cases = (
 
 is $book->numberOfEntries, 112;
 
-$DB::single = 1;
 foreach my $tc (@test_cases) {
 	my $fen = $tc->{fen};
 	my $book_entry = Chess::OpeningBook::Entry->new($fen);
