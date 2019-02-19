@@ -14,8 +14,7 @@ use common::sense;
 use Test::More;
 
 use Chess::Opening::Book::Polyglot;
-use Chess::Opening::BookEntry;
-use Chess::Opening::BookMove;
+use Chess::Opening::Book::Entry;
 
 # This opening book comes from a collection of 998 games of Salo Flohr
 # with a maximum depth of 4 plies.  It is for testing only!
@@ -842,7 +841,7 @@ my @test_cases = (
 
 foreach my $tc (@test_cases) {
 	my $fen = $tc->{fen};
-	my $book_entry = Chess::Opening::BookEntry->new($fen);
+	my $book_entry = Chess::Opening::Book::Entry->new($fen);
 
 	foreach my $move (@{$tc->{moves}}) {
 		$book_entry->addMove(%$move);
@@ -850,7 +849,7 @@ foreach my $tc (@test_cases) {
 
 	my $entry = $book->lookupFEN($fen);
 	ok $entry, $fen;
-	ok $entry->isa('Chess::Opening::BookEntry');
+	ok $entry->isa('Chess::Opening::Book::Entry');
 	$tc->{got} = $entry;
 	$tc->{wanted} = $book_entry;
 	is_deeply $entry, $book_entry, $fen;

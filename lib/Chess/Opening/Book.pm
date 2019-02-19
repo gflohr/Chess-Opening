@@ -18,6 +18,8 @@ use common::sense;
 
 use Locale::TextDomain 'com.cantanea.Chess-Opening';
 
+use Chess::Opening::Book::Entry;
+
 sub new {
 	require Carp;
 
@@ -30,7 +32,7 @@ sub lookupFEN {
 	my $key = $self->_getKey($fen) or return;
 	my ($first, $last) = $self->_findKey($key) or return;
 
-	my $entry = Chess::Opening::BookEntry->new($fen);
+	my $entry = Chess::Opening::Book::Entry->new($fen);
 	foreach my $i ($first .. $last) {
 		$entry->addMove($self->_getEntry($i));
 	}

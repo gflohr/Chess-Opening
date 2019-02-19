@@ -9,26 +9,14 @@
 # to Public License, Version 2, as published by Sam Hocevar. See
 # http://www.wtfpl.net/ for more details.
 
-package Chess::Opening::BookEntry;
+package Chess::Opening::Book::Move;
 
 use common::sense;
 
 use Locale::TextDomain 'com.cantanea.Chess-Opening';
 
-use Chess::Opening::BookMove;
-
 sub new {
-	my ($class, $fen) = @_;
-
-	bless {
-		__fen => $fen,
-		__moves => [],
-		__count => 0,
-	}, $class;
-}
-
-sub addMove {
-	my ($self, %args) = @_;
+	my ($class, %args) = @_;
 
 	if (!exists $args{move}) {
 		require Carp;
@@ -43,18 +31,20 @@ sub addMove {
 	if (exists $args{count} && $args{count}
 	    && $args{count} !~ /^[1-9][0-9]*$/) {
 		require Carp;
-		Carp::croak(__"count must be a positive intenger");
+		Carp::croak(__"count must be a positive integer");
 	}
+	$args{count} ||= 1;
+	$args{learn} = '0' if !exists $args{learn};
 
-	my $move = Chess::Opening::BookMove->new(%args);
-	push @{$self->{__moves}}, $move;
-	$self->{__count} += $move->count;
-
-	return $self;
+	bless {
+		__move => $args{move},
+		__count => $args{count},
+		__learn => $args{learn},
+	}, $class;
 }
 
-sub fen { shift->{__fen} }
-sub moves { shift->{__moves} }
 sub count { shift->{__count} }
+sub move { shift->{__move} }
+sub learns { shift->{__learn} }
 
 1;

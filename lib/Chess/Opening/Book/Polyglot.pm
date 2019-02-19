@@ -21,7 +21,6 @@ use base 'Chess::Opening::Book';
 use Fcntl qw(:seek);
 
 use Chess::Opening::Book::Polyglot::Random64;
-use Chess::Opening::BookEntry;
 
 sub new {
 	my ($class, $filename) = @_;
