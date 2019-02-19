@@ -107,7 +107,7 @@ sub _findKey {
 			$lower = $try;
 			$lower32 = $got32;
 		} elsif ($got32 > $key32) {
-			last if $upper = $try;
+			last if $upper == $try;
 			$upper = $try;
 			$upper32 = $got32;
 		}
