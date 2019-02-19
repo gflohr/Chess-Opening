@@ -16,9 +16,9 @@ my %WriteMakefileArgs = (
     "ExtUtils::MakeMaker" => 0,
     "Module::Build" => "0.28"
   },
-  "DISTNAME" => "Chess-OpeningBook",
+  "DISTNAME" => "Chess-Opening",
   "LICENSE" => "unrestricted",
-  "NAME" => "Chess::OpeningBook",
+  "NAME" => "Chess::Opening",
   "PREREQ_PM" => {
     "Carp" => 0,
     "Fcntl" => 0,
@@ -29,7 +29,6 @@ my %WriteMakefileArgs = (
     "integer" => 0
   },
   "TEST_REQUIRES" => {
-    "Data::Dumper" => 0,
     "Test::More" => 0
   },
   "VERSION" => "0.1",
@@ -41,7 +40,6 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Carp" => 0,
-  "Data::Dumper" => 0,
   "Fcntl" => 0,
   "Locale::TextDomain" => 0,
   "Module::Build" => "0.28",

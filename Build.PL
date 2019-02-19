@@ -18,10 +18,10 @@ my %module_build_args = (
   "dist_author" => [
     "Guido Flohr <guido.flohr\@cantanea.com>"
   ],
-  "dist_name" => "Chess-OpeningBook",
+  "dist_name" => "Chess-Opening",
   "dist_version" => "0.1",
   "license" => "unrestricted",
-  "module_name" => "Chess::OpeningBook",
+  "module_name" => "Chess::Opening",
   "recursive_test_files" => 1,
   "requires" => {
     "Carp" => 0,
@@ -33,14 +33,12 @@ my %module_build_args = (
     "integer" => 0
   },
   "test_requires" => {
-    "Data::Dumper" => 0,
     "Test::More" => 0
   }
 );
 
 
 my %fallback_build_requires = (
-  "Data::Dumper" => 0,
   "Module::Build" => "0.28",
   "Test::More" => 0
 );
