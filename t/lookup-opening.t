@@ -13,17 +13,17 @@ use common::sense;
 
 use Test::More;
 
-use Chess::OpeningBook::Polyglot;
-use Chess::OpeningBook::Entry;
-use Chess::OpeningBook::Move;
+use Chess::Opening::Book::Polyglot;
+use Chess::Opening::BookEntry;
+use Chess::Opening::BookMove;
 
 # This opening book comes from a collection of 998 games of Salo Flohr
 # with a maximum depth of 4 plies.  It is for testing only!
 my $book_file = 't/flohr.bin';
 
-my $book = Chess::OpeningBook::Polyglot->new($book_file);
+my $book = Chess::Opening::Book::Polyglot->new($book_file);
 ok $book;
-ok $book->isa('Chess::OpeningBook');
+ok $book->isa('Chess::Opening::Book');
 
 my @test_cases = (
 	{
@@ -842,7 +842,7 @@ my @test_cases = (
 
 foreach my $tc (@test_cases) {
 	my $fen = $tc->{fen};
-	my $book_entry = Chess::OpeningBook::Entry->new($fen);
+	my $book_entry = Chess::Opening::BookEntry->new($fen);
 
 	foreach my $move (@{$tc->{moves}}) {
 		$book_entry->addMove(%$move);
@@ -850,7 +850,7 @@ foreach my $tc (@test_cases) {
 
 	my $entry = $book->lookupFEN($fen);
 	ok $entry, $fen;
-	ok $entry->isa('Chess::OpeningBook::Entry');
+	ok $entry->isa('Chess::Opening::BookEntry');
 	$tc->{got} = $entry;
 	$tc->{wanted} = $book_entry;
 	is_deeply $entry, $book_entry, $fen;

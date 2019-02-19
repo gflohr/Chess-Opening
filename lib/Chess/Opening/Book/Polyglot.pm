@@ -12,10 +12,10 @@
 # Make Dist::Zilla happy.
 # ABSTRACT: Read chess opening books in polyglot format
 
-package Chess::OpeningBook::Polyglot;
+package Chess::Opening::Book::Polyglot;
 
 use common::sense;
 
-use base 'Chess::OpeningBook';
+use base 'Chess::Opening::Book';
 
 1;

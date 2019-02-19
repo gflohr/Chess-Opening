@@ -12,11 +12,9 @@
 # Make Dist::Zilla happy.
 # ABSTRACT: Read chess opening books in polyglot format
 
-package Chess::OpeningBook::Polyglot::Random64;
+package Chess::Opening::Book::Polyglot::Random64;
 
 use common::sense;
-
-use Locale::TextDomain qw(com.cantanea.Chess-OpeningBook-Polyglot);
 
 use constant DATA => [
 	"\x9d\x39\x24\x7e\x33\x77\x6d\x41","\x2a\xf7\x39\x80\x05\xaa\xa5\xc7",

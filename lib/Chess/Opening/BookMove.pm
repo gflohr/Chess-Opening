@@ -9,11 +9,11 @@
 # to Public License, Version 2, as published by Sam Hocevar. See
 # http://www.wtfpl.net/ for more details.
 
-package Chess::OpeningBook::Move;
+package Chess::Opening::BookMove;
 
 use common::sense;
 
-use Locale::TextDomain 'com.cantanea.Chess-OpeningBook';
+use Locale::TextDomain 'com.cantanea.Chess-Opening';
 
 sub new {
 	my ($class, %args) = @_;

@@ -9,13 +9,13 @@
 # to Public License, Version 2, as published by Sam Hocevar. See
 # http://www.wtfpl.net/ for more details.
 
-package Chess::OpeningBook::Entry;
+package Chess::Opening::BookEntry;
 
 use common::sense;
 
-use Locale::TextDomain 'com.cantanea.Chess-OpeningBook';
+use Locale::TextDomain 'com.cantanea.Chess-Opening';
 
-use Chess::OpeningBook::Move;
+use Chess::Opening::BookMove;
 
 sub new {
 	my ($class, $fen) = @_;
@@ -46,7 +46,7 @@ sub addMove {
 		Carp::croak(__"count must be a positive intenger");
 	}
 
-	my $move = Chess::OpeningBook::Move->new(%args);
+	my $move = Chess::Opening::BookMove->new(%args);
 	push @{$self->{__moves}}, $move;
 	$self->{__count} += $move->count;
 

@@ -12,14 +12,14 @@
 # Make Dist::Zilla happy.
 # ABSTRACT: Read chess opening books in polyglot format
 
-package Chess::OpeningBook;
+package Chess::Opening::Book;
 
 use common::sense;
 
 use Fcntl qw(:seek);
 
-use Chess::OpeningBook::Polyglot::Random64;
-use Chess::OpeningBook::Entry;
+use Chess::Opening::Book::Polyglot::Random64;
+use Chess::Opening::BookEntry;
 
 # Polyglot style piece encodings.
 my %pieces = (
@@ -70,7 +70,7 @@ sub lookupFEN {
 	my $key = $self->_getKey($fen) or return;
 	my ($first, $last) = $self->_findKey($key) or return;
 
-	my $entry = Chess::OpeningBook::Entry->new($fen);
+	my $entry = Chess::Opening::BookEntry->new($fen);
 	foreach my $i ($first .. $last) {
 		$entry->addMove($self->__getEntry($i));
 	}
@@ -144,7 +144,7 @@ sub _getKey {
 		return pack 'NN', @llongs;
 	};
 
-	my $random64 = Chess::OpeningBook::Polyglot::Random64::DATA();
+	my $random64 = Chess::Opening::Book::Polyglot::Random64::DATA();
 
 	my %pos = $whatever->_parseFEN($fen) or return;
 
