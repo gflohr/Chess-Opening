@@ -51,7 +51,9 @@ while ($pgn->read_game) {
 		my $move_info = $pos->go_move($move) or die;
 		my $move = lc "$move_info->{from}$move_info->{to}$move_info->{promote}";
 		$positions{$fen}->{moves}->{$move} = 1;
+		my $parent = $fen;
 		$fen = $pos->get_fen;
+		$positions{$fen}->{parent} = $parent;
 	}
 	$positions{$fen}->{eco} = $eco;
 	$positions{$fen}->{variation} = $variation;
@@ -62,11 +64,18 @@ foreach my $fen (sort keys %positions) {
 	my $moves = $position->{moves};
 	my $eco = $position->{eco};
 	my $variation = $position->{variation};
+	my $parent = $position->{parent};
+	if (defined $parent) {
+		$parent = "'$parent'";
+	} else {
+		$parent = 'undef';
+	}
 	$variation =~ s{([\\'])}{\\$1}g;
 	print <<EOF;
 	'$fen' => {
 		eco => '$eco',
 		variation => N__('$variation'),
+		parent => $parent,
 		moves => {
 EOF
 
