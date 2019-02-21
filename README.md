@@ -5,7 +5,7 @@
 # Chess-OpeningBook
 
 Chess-OpeningBook is a Perl library for accessing chess opening data.  See
-[Chess::Opening](lib/Chess/Opening) for an overview.
+[Chess::Opening](lib/Chess/Opening.pod) for an overview.
 
 You can use it for reading chess opening books in
 [polyglot](https://github.com/ddugovic/polyglot) format. See
