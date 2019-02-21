@@ -64,7 +64,8 @@ foreach my $tc (@test_cases) {
 	ok $entry->isa('Chess::Opening::ECO::Entry');
 
 	is $entry->fen, $fen;
-	is $entry->count,  scalar keys %{$tc->{moves}}, "FEN: $fen";
+	is $entry->counts,  scalar keys %{$tc->{moves}}, "FEN: $fen";
+	is $entry->weights,  scalar keys %{$tc->{moves}}, "FEN: $fen";
 
 	is $entry->parent, $tc->{parent}, "FEN: $fen";
 

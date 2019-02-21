@@ -40,6 +40,7 @@ sub addMove {
 		Carp::croak(__x("invalid move '{move}'",
 		                move => '$args{move}'));
 	}
+	$args{count} = $args{weight} if exists $args{weight};
 	if (exists $args{count} && $args{count}
 	    && $args{count} !~ /^[1-9][0-9]*$/) {
 		require Carp;
@@ -48,13 +49,14 @@ sub addMove {
 
 	my $move = Chess::Opening::Book::Move->new(%args);
 	$self->{__moves}->{$args{move}} = $move;
-	$self->{__count} += $move->count;
+	$self->{__counts} += $move->count;
 
 	return $self;
 }
 
 sub fen { shift->{__fen} }
 sub moves { shift->{__moves} }
-sub count { shift->{__count} }
+sub counts { shift->{__counts} }
+sub weights { shift->{__counts} }
 
 1;
