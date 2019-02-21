@@ -14,7 +14,7 @@ use common::sense;
 use Test::More;
 
 use Chess::Opening::Book::ECO;
-use Chess::Opening::Book::Entry;
+use Chess::Opening::ECO::Entry;
 
 my $book = Chess::Opening::Book::ECO->new;
 ok $book;
@@ -101,7 +101,7 @@ my @test_cases = (
 
 foreach my $tc (@test_cases) {
 	my $fen = $tc->{fen};
-	my $book_entry = Chess::Opening::Book::Entry->new($fen);
+	my $book_entry = Chess::Opening::ECO::Entry->new($fen);
 
 	foreach my $move (@{$tc->{moves}}) {
 		$book_entry->addMove(%$move);
@@ -109,7 +109,7 @@ foreach my $tc (@test_cases) {
 
 	my $entry = $book->lookupFEN($fen);
 	ok $entry, $fen;
-	ok $entry->isa('Chess::Opening::Book::Entry');
+	ok $entry->isa('Chess::Opening::ECO::Entry');
 	$tc->{got} = $entry;
 	$tc->{wanted} = $book_entry;
 	is_deeply $entry, $book_entry, $fen;

@@ -16,9 +16,11 @@ package Chess::Opening::Book::ECO;
 
 use common::sense;
 
-use base 'Chess::Opening::Book';
-
 use Fcntl qw(:seek);
+
+use Chess::Opening::ECO::Entry;
+
+use base 'Chess::Opening::Book';
 
 sub new {
 	my $self = '';
@@ -36,7 +38,7 @@ sub lookupFEN {
 	return if !exists $positions->{$fen};
 
 	my $position = $positions->{$fen};
-	my $entry = Chess::Opening::Book::Entry->new($fen);
+	my $entry = Chess::Opening::ECO::Entry->new($fen);
 
 	foreach my $move (keys %{$position->{moves}}) {
 		$entry->addMove(move => $move);
