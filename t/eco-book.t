@@ -26,83 +26,63 @@ my @test_cases = (
 		moves => [
 			{
 				move => 'a2a3',
-				count => 1,
 			},
 			{
 				move => 'a2a4',
-				count => 1,
 			},
 			{
 				move => 'b1a3',
-				count => 1,
 			},
 			{
 				move => 'b1c3',
-				count => 1,
 			},
 			{
 				move => 'b2b3',
-				count => 1,
 			},
 			{
 				move => 'b2b4',
-				count => 1,
 			},
 			{
 				move => 'c2c3',
-				count => 1,
 			},
 			{
 				move => 'c2c4',
-				count => 1,
 			},
 			{
 				move => 'd2d3',
-				count => 1,
 			},
 			{
 				move => 'd2d4',
-				count => 1,
 			},
 			{
 				move => 'e2e3',
-				count => 1,
 			},
 			{
 				move => 'e2e4',
-				count => 1,
 			},
 			{
 				move => 'f2f3',
-				count => 1,
 			},
 			{
 				move => 'f2f4',
-				count => 1,
 			},
 			{
 				move => 'g1f3',
-				count => 1,
 			},
 			{
 				move => 'g1h3',
-				count => 1,
 			},
 			{
 				move => 'g2g3',
-				count => 1,
 			},
 			{
 				move => 'g2g4',
-				count => 1,
 			},
 			{
 				move => 'h2h3',
-				count => 1,
 			},
 			{
 				move => 'h2h4',
-				count => 1,
 			},
 		],
 	},
@@ -111,11 +91,9 @@ my @test_cases = (
 		moves => [
 			{
 				move => 'd1c2',
-				count => 1,
 			},
 			{
 				move => 'f3d2',
-				count => 1,
 			},
 		],
 	},
