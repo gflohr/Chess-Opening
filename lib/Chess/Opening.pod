@@ -57,25 +57,25 @@ The meaning of these characters are:
 
 =over 4
 
-=item starting file (or column), a character between "a" and "h"
+=item - starting file (or column), a character between "a" and "h"
 
-=item starting rank (or row), a digit between "1" and "8"
+=item - starting rank (or row), a digit between "1" and "8"
 
-=item destination file (or column), a character between "a" and "h"
+=item - destination file (or column), a character between "a" and "h"
 
-=item destination rank (or row), a digit between "1" and "8"
+=item - destination rank (or row), a digit between "1" and "8"
 
-=item an optional promotion piece:
+=item - an optional promotion piece:
 
 =over 4
 
-=item q for a queen
+=item B<q> for a queen
 
-=item r for a rook
+=item B<r> for a rook
 
-=item b for a bishop
+=item B<b> for a bishop
 
-=item n for a knight
+=item B<n> for a knight
 
 =back
 
