@@ -22,7 +22,7 @@ sub new {
 
 	bless {
 		__fen => $fen,
-		__moves => [],
+		__moves => {},
 		__count => 0,
 	}, $class;
 }
@@ -47,7 +47,7 @@ sub addMove {
 	}
 
 	my $move = Chess::Opening::Book::Move->new(%args);
-	push @{$self->{__moves}}, $move;
+	$self->{__moves}->{$args{move}} = $move;
 	$self->{__count} += $move->count;
 
 	return $self;
