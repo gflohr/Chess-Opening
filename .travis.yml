@@ -6,6 +6,6 @@ perl:
 env:
   - AUTHOR_TESTING=1
 before_install:
-  - cpanm Pod::Coverage::TrustPod Test::Perl::Critic
+  - cpanm --notest Pod::Coverage::TrustPod Test::Perl::Critic Devel::Cover::Report::Coveralls
 after_success:
   - cover -test -report coveralls
