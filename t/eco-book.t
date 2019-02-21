@@ -103,8 +103,10 @@ foreach my $tc (@test_cases) {
 	my $fen = $tc->{fen};
 	my $book_entry = Chess::Opening::ECO::Entry->new($fen);
 
+	my $count = 0;
 	foreach my $move (@{$tc->{moves}}) {
 		$book_entry->addMove(%$move);
+		++$count;
 	}
 
 	my $entry = $book->lookupFEN($fen);
@@ -113,6 +115,12 @@ foreach my $tc (@test_cases) {
 	$tc->{got} = $entry;
 	$tc->{wanted} = $book_entry;
 	is_deeply $entry, $book_entry, $fen;
+
+	is $entry->fen, $fen;
+	is $entry->count, $count;
+
+	my $moves = $entry->moves;
+	is scalar keys %$moves, $count;
 }
 
 done_testing;
