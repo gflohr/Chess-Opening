@@ -25,8 +25,4 @@ sub new {
 	return $self;
 }
 
-sub fen { shift->{__fen} }
-sub moves { shift->{__moves} }
-sub count { shift->{__count} }
-
 1;
