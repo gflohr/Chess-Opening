@@ -20,12 +20,10 @@ use base 'Chess::Opening::Book';
 
 use Fcntl qw(:seek);
 
-use Chess::Opening::Book::Polyglot::Random64;
-
 sub new {
 	my $self = '';
 
-	require Chess::Opening::ECO::Data;
+	require Chess::Opening::ECO;
 
 	bless \$self, shift;
 }
@@ -33,7 +31,7 @@ sub new {
 sub lookupFEN {
 	my ($self, $fen) = @_;
 
-	my $positions = Chess::Opening::ECO::Data->positions;
+	my $positions = Chess::Opening::ECO->positions;
 
 	return if !exists $positions->{$fen};
 

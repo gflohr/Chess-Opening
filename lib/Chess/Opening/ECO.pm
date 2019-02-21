@@ -12,7 +12,7 @@
 # Make Dist::Zilla happy.
 # ABSTRACT: Read chess opening books in polyglot format
 
-package Chess::Opening::ECO::Data;
+package Chess::Opening::ECO;
 
 use common::sense;
 
@@ -98734,20 +98734,19 @@ sub positions {
 
 =head1 NAME
 
-Chess::Opening::ECO::Data - ECO data
+Chess::Opening::ECO - ECO data
 
 =head1 SYNOPSIS
 
-	use Chess::Opening::ECO::Data;
+	use Chess::Opening::ECO;
 
-	$positions = Chess::Opening::ECO::Data->positions;
+	$positions = Chess::Opening::ECO->positions;
 
 =head1 DESCRIPTION
 
 This module is a mere container for the ECO (Encyclopedia of Chess Openings)
-data.  You should rather use one of the high-level interfaces
-L<Chess::Opening::ECO> or L<Chess::Opening::Book::ECO> for accessing or
-browsing the data contained here.
+data.  You should rather use one the high-level interface
+L<Chess::Opening::Book::ECO> for accessing or browsing the data contained here.
 
 =head1 METHODS
 
@@ -98795,4 +98794,4 @@ all rights reserved.
 
 =head1 SEE ALSO
 
-L<Chess::Opening::ECO>, L<Chess::Opening::Book::ECO>, perl(1)
+L<Chess::Opening::Book::ECO>, L<Chess::Opening::Book::Entry>, perl(1)
