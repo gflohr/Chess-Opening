@@ -4,12 +4,16 @@
 
 # Chess-OpeningBook
 
-Access to chess opening data.
+Chess-OpeningBook is a Perl library for accessing chess opening data.
 
-Read chess opening books in [polyglot](https://github.com/ddugovic/polyglot)
-format.
+You can use it for reading chess opening books in
+[polyglot](https://github.com/ddugovic/polyglot) format. See
+[Chess::Opening::Book::Polyglot](blob/master/lib/Chess/Opening/Book/Polyglot.pod)
+for more information.
 
-Classify openings according to the Encyclopedia of Chess Openings ECO.
+You can also lookup and browse ECO (Encyclopedia of Chess Openings) data.  See
+[Chess::Opening::Book::ECO](blob/master/lib/Chess/Opening/Book/ECO.pod)
+for more information.
 
 ## Copryight
 
