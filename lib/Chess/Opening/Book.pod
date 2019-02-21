@@ -18,6 +18,11 @@ L<Chess::Opening::Book::ECO> instead.
 
 =over 4
 
+=item B<new ARGS>
+
+See the documentation of the sub class you are instantiating for usage
+information.
+
 =item B<lookupFEN FEN>
 
 Looks up a position in Forsyth-Edwards-Notation B<FEN> in the opening book.
