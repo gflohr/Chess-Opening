@@ -7,3 +7,5 @@ env:
   - AUTHOR_TESTING=1
 before_install:
   - cpanm Pod::Coverage::TrustPod Test::Perl::Critic
+after_success:
+  - cover -test -report coveralls
