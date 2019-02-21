@@ -45,6 +45,6 @@ sub new {
 
 sub count { shift->{__count} }
 sub move { shift->{__move} }
-sub learns { shift->{__learn} }
+sub learn { shift->{__learn} }
 
 1;

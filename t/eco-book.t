@@ -121,6 +121,11 @@ foreach my $tc (@test_cases) {
 
 	my $moves = $entry->moves;
 	is scalar keys %$moves, $count;
+
+	foreach my $move (keys %$moves) {
+		is $moves->{$move}->move, $move;
+		is $moves->{$move}->learn, 0;
+	}
 }
 
 done_testing;
