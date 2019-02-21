@@ -1,4 +1,3 @@
-[![WTFPL-2.0](https://img.shields.io/aur/license/yaourt.svg)](http://www.wtfpl.net/)
 [![Price](https://img.shields.io/badge/price-FREE-0098f7.svg)](https://github.com/gflohr/qgoda/blob/master/LICENSE)
 [![Travis (.org)](https://img.shields.io/travis/gflohr/Chess-Opening.svg)](https://travis-ci.org/gflohr/Chess-Opening)
 [![Coverage Status](https://coveralls.io/repos/github/gflohr/Chess-Opening/badge.svg?branch=master)](https://coveralls.io/github/gflohr/Chess-Opening?branch=master)
