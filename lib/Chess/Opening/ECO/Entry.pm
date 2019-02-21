@@ -21,8 +21,12 @@ sub new {
 	my ($class, $fen, %args) = @_;
 
 	my $self = $class->SUPER::new($fen);
+	$self->{__parent} = $args{parent} if exists $args{parent};
 
 	return $self;
 }
 
+sub parent {
+	shift->{__parent};
+}
 1;

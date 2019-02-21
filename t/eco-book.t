@@ -30,6 +30,7 @@ my @test_cases = (
 	{
 		fen => 'rnbqr1k1/pp3pbp/3p1np1/2pP4/4P3/2N2N2/PP2BPPP/R1BQ1RK1 w - - 6 10',
 		moves => ['d1c2', 'f3d2'],
+		parent => 'rnbq1rk1/pp3pbp/3p1np1/2pP4/4P3/2N2N2/PP2BPPP/R1BQ1RK1 b - - 5 9',
 	},
 );
 
@@ -37,17 +38,19 @@ foreach my $tc (@test_cases) {
 	my $fen = $tc->{fen};
 
 	my $entry = $book->lookupFEN($fen);
-	ok $entry, $fen;
+	ok $entry, "FEN: $fen";
 	ok $entry->isa('Chess::Opening::ECO::Entry');
 
 	is $entry->fen, $fen;
-	is $entry->count,  @{$tc->{moves}};
+	is $entry->count,  @{$tc->{moves}}, "FEN: $fen";
+
+	is $entry->parent, $tc->{parent}, "FEN: $fen";
 
 	my $moves = $entry->moves;
 
 	foreach my $move (@{$tc->{moves}}) {
-		is $moves->{$move}->move, $move;
-		is $moves->{$move}->learn, 0;
+		is $moves->{$move}->move, $move, "FEN: $fen";
+		is $moves->{$move}->learn, 0, "FEN: $fen";
 	}
 }
 

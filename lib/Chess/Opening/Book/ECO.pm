@@ -38,7 +38,8 @@ sub lookupFEN {
 	return if !exists $positions->{$fen};
 
 	my $position = $positions->{$fen};
-	my $entry = Chess::Opening::ECO::Entry->new($fen);
+	my $entry = Chess::Opening::ECO::Entry->new($fen,
+												parent => $position->{parent});
 
 	foreach my $move (keys %{$position->{moves}}) {
 		$entry->addMove(move => $move);
