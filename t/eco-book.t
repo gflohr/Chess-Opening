@@ -23,106 +23,29 @@ ok $book->isa('Chess::Opening::Book');
 my @test_cases = (
 	{
 		fen => 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
-		moves => [
-			{
-				move => 'a2a3',
-			},
-			{
-				move => 'a2a4',
-			},
-			{
-				move => 'b1a3',
-			},
-			{
-				move => 'b1c3',
-			},
-			{
-				move => 'b2b3',
-			},
-			{
-				move => 'b2b4',
-			},
-			{
-				move => 'c2c3',
-			},
-			{
-				move => 'c2c4',
-			},
-			{
-				move => 'd2d3',
-			},
-			{
-				move => 'd2d4',
-			},
-			{
-				move => 'e2e3',
-			},
-			{
-				move => 'e2e4',
-			},
-			{
-				move => 'f2f3',
-			},
-			{
-				move => 'f2f4',
-			},
-			{
-				move => 'g1f3',
-			},
-			{
-				move => 'g1h3',
-			},
-			{
-				move => 'g2g3',
-			},
-			{
-				move => 'g2g4',
-			},
-			{
-				move => 'h2h3',
-			},
-			{
-				move => 'h2h4',
-			},
-		],
+		moves => ['a2a3', 'a2a4', 'b1a3', 'b1c3', 'b2b3', 'b2b4', 'c2c3',
+		          'c2c4', 'd2d3', 'd2d4', 'e2e3', 'e2e4', 'f2f3', 'f2f4',
+				  'g1f3', 'g1h3','g2g3','g2g4','h2h3','h2h4' ],
 	},
 	{
 		fen => 'rnbqr1k1/pp3pbp/3p1np1/2pP4/4P3/2N2N2/PP2BPPP/R1BQ1RK1 w - - 6 10',
-		moves => [
-			{
-				move => 'd1c2',
-			},
-			{
-				move => 'f3d2',
-			},
-		],
+		moves => ['d1c2', 'f3d2'],
 	},
 );
 
 foreach my $tc (@test_cases) {
 	my $fen = $tc->{fen};
-	my $book_entry = Chess::Opening::ECO::Entry->new($fen);
-
-	my $count = 0;
-	foreach my $move (@{$tc->{moves}}) {
-		$book_entry->addMove(%$move);
-		++$count;
-	}
 
 	my $entry = $book->lookupFEN($fen);
 	ok $entry, $fen;
 	ok $entry->isa('Chess::Opening::ECO::Entry');
-	$tc->{got} = $entry;
-	$tc->{wanted} = $book_entry;
-	is_deeply $entry, $book_entry, $fen;
 
 	is $entry->fen, $fen;
-	is $entry->count, $count;
+	is $entry->count,  @{$tc->{moves}};
 
 	my $moves = $entry->moves;
-	is scalar keys %$moves, $count;
 
-	foreach my $move (keys %$moves) {
+	foreach my $move (@{$tc->{moves}}) {
 		is $moves->{$move}->move, $move;
 		is $moves->{$move}->learn, 0;
 	}
