@@ -118,7 +118,7 @@ sub _getKey {
 	my $random64 = Chess::Opening::Book::Polyglot::Random64::DATA();
 
 	my %pos = $whatever->_parseFEN($fen) or return;
-	my %pieces = $whatever->pieces;
+	my %pieces = $whatever->_pieces;
 	foreach my $spec (@{$pos{pieces}}) {
 		my ($file, $rank) = split //, $spec->{field};
 		$file = (ord $file) - (ord 'a');

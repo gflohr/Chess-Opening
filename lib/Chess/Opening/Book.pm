@@ -40,7 +40,7 @@ sub lookupFEN {
 	return $entry;
 }
 
-sub pieces {
+sub _pieces {
 	# Polyglot style piece encodings.
 	p => 0,
 	P => 1,
@@ -91,7 +91,7 @@ sub _parseFEN {
 	my $rank = 8;
 	my $file;
 	$result{pieces} = [];
-	my %pieces = $whatever->pieces;
+	my %pieces = $whatever->_pieces;
 	foreach my $token (@ranks) {
 		$file = ord 'a';
 		foreach my $char (split //, $token) {
