@@ -41,7 +41,7 @@ See L<Chess::Opening::Book/lookupFEN> for more information
 
 Returns a reference to a hash of L<Chess::Opening::Book::Move> objects for
 this position.  The keys are the moves in coordinate notation
-(see L<Chess::Opening/Moves) and the values are the associated objects.
+(see L<Chess::Opening/Moves>) and the values are the associated objects.
 
 =item B<weights>
 
