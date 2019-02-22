@@ -40,13 +40,12 @@ sub new {
 		__move => $args{move},
 		__count => $args{count},
 		__learn => $args{learn},
-		__target => $args{target},
 	}, $class;
 }
 
+sub weight { shift->{__count} }
 sub count { shift->{__count} }
 sub move { shift->{__move} }
 sub learn { shift->{__learn} }
-sub target { shift->{__target} }
 
 1;

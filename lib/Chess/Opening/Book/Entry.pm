@@ -44,7 +44,7 @@ sub addMove {
 	if (exists $args{count} && $args{count}
 	    && $args{count} !~ /^[1-9][0-9]*$/) {
 		require Carp;
-		Carp::croak(__"count must be a positive intenger");
+		Carp::croak(__"count must be a positive integer");
 	}
 
 	my $move = Chess::Opening::Book::Move->new(%args);

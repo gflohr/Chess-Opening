@@ -28,16 +28,18 @@ sub new {
 	return $self;
 }
 
-sub parent {
-	shift->{__parent};
+sub eco {
+	my ($self) = @_;
+
+	return substr $self->xeco, 0, 3;
 }
 
-sub eco {
+sub xeco {
 	shift->{__eco};
 }
 
 sub variation {
-	__(shift->__variation);
+	__(shift->{__variation});
 }
 
 1;

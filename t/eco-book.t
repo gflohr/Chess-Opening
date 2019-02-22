@@ -15,6 +15,13 @@ use Test::More;
 
 use Chess::Opening::Book::ECO;
 use Chess::Opening::ECO::Entry;
+use POSIX;
+
+BEGIN {
+	delete $ENV{LANGUAGE};
+	$ENV{LANG} = $ENV{LC_MESSAGES} = $ENV{LC_ALL} = 'C';
+	POSIX::setlocale(POSIX::LC_ALL(), 'C');
+}
 
 my $book = Chess::Opening::Book::ECO->new;
 ok $book;
@@ -45,6 +52,9 @@ my @test_cases = (
 			'h2h3' => 'rnbqkbnr/pppppppp/8/8/8/7P/PPPPPPP1/RNBQKBNR b KQkq - 0 1',
 			'h2h4' => 'rnbqkbnr/pppppppp/8/8/7P/8/PPPPPPP1/RNBQKBNR b KQkq h3 0 1',
 		},
+		eco => 'A00',
+		xeco => 'A00a',
+		variation => 'Start',
 	},
 	{
 		fen => 'rnbqr1k1/pp3pbp/3p1np1/2pP4/4P3/2N2N2/PP2BPPP/R1BQ1RK1 w - - 6 10',
@@ -52,6 +62,9 @@ my @test_cases = (
 				'd1c2' => 'rnbqr1k1/pp3pbp/3p1np1/2pP4/4P3/2N2N2/PPQ1BPPP/R1B2RK1 b - - 7 10',
 				'f3d2' => 'rnbqr1k1/pp3pbp/3p1np1/2pP4/4P3/2N5/PP1NBPPP/R1BQ1RK1 b - - 7 10',
 		},
+		eco => 'A76',
+		xeco => 'A76',
+		variation => 'Benoni: Classical, Main Line',
 	},
 );
 
@@ -63,6 +76,9 @@ foreach my $tc (@test_cases) {
 	ok $entry->isa('Chess::Opening::ECO::Entry');
 
 	is $entry->fen, $fen;
+	is $entry->eco, $tc->{eco}, $fen;
+	is $entry->xeco, $tc->{xeco}, $fen;
+	is $entry->variation, $tc->{variation}, $fen;
 	is $entry->counts,  scalar keys %{$tc->{moves}}, "FEN: $fen";
 	is $entry->weights,  scalar keys %{$tc->{moves}}, "FEN: $fen";
 
@@ -72,7 +88,6 @@ foreach my $tc (@test_cases) {
 		is $moves->{$move}->move, $move, "FEN: $fen";
 		is $moves->{$move}->learn, 0, "FEN: $fen";
 		is $moves->{$move}->count, 1, "FEN: $fen";
-		is $moves->{$move}->target, $tc->{moves}->{$move}->{parent}, "FEN: $fen";
 	}
 }
 

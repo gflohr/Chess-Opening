@@ -50,9 +50,11 @@ while ($pgn->read_game) {
 	my $pos = Chess::Rep->new;
 	my $fen = $pos->get_fen;
 
+        my @san;
 	foreach my $move (@moves) {
 		my $move_info = $pos->go_move($move) or die;
 		my $move = lc "$move_info->{from}$move_info->{to}$move_info->{promote}";
+		push @san, $move_info->{san};
 		my $parent = $fen;
 		$fen = $pos->get_fen;
 		$positions{$parent}->{moves}->{$move} = $fen;
@@ -60,8 +62,11 @@ while ($pgn->read_game) {
 	}
 	$positions{$fen}->{eco} = $eco;
 	$positions{$fen}->{variation} = $variation;
+	$positions{$fen}->{history} = \@san;
 }
 
+# FIXME! Sort by ECO code and the length of the line.  That will make it a lot
+# easier to translate.
 foreach my $fen (sort keys %positions) {
 	my $position = $positions{$fen};
 	my $moves = $position->{moves};
@@ -73,17 +78,27 @@ foreach my $fen (sort keys %positions) {
 	my $eco = $naming_position->{eco};
 	my $variation = $naming_position->{variation};
 	$variation =~ s{([\\'])}{\\$1}g;
+
+	my $comment = '# TRANSLATORS:';
+	for (my $i = 0; $i < @{$position->{history}}; ++$i) {
+			if (!($i & 1)) {
+					my $moveno = 1 + ($i >> 1);
+					$comment .= " $moveno.";
+			}
+			$comment .= " $position->{history}->[$i]";
+	}
+	$comment .= "\n";
 	print <<EOF;
 		'$fen' => {
 			eco => '$eco',
+			$comment
 			variation => N__('$variation'),
 			moves => {
 EOF
 
 	foreach my $move (sort keys %{$position->{moves}}) {
-		my $target_fen = $position->{moves}->{$move};
 		print <<EOF;
-				'$move' => '$target_fen',
+				'$move' => 1,
 EOF
 	}
 
