@@ -17,8 +17,6 @@
 use common::sense;
 
 use Chess::PGN::Parse;
-use Locale::PO;
-use Locale::TextDomain qw(wtf);
 use Chess::Rep;
 
 my $filename;
