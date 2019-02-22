@@ -20,6 +20,7 @@ lib/Chess/Opening/Book/Move.pod
 lib/Chess/Opening/Book/Polyglot.pm
 lib/Chess/Opening/Book/Polyglot.pod
 lib/Chess/Opening/Book/Polyglot/Random64.pm
+lib/Chess/Opening/Book/Polyglot/Random64.pod
 lib/Chess/Opening/ECO.pm
 lib/Chess/Opening/ECO/Entry.pm
 lib/Chess/Opening/ECO/Entry.pod
