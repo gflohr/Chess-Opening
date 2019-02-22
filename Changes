@@ -1,6 +1,7 @@
 Revision history for Perl extension Chess-Opening
 
 {{$NEXT}}
+    - Create a module Chess::Opening to make CPAN happy.
 
 0.1  2019-02-22
     - initial version
