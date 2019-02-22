@@ -41,6 +41,11 @@ while ($pgn->read_game) {
 	my $tags = $pgn->tags;
 	my $eco = $tags->{ECO};
 	my $variation = $tags->{Variation};
+        
+        # Insert spaces after the periods.
+        $variation =~ s{([0-9])\.\.\.([KQBNR]?[a-h][1-8])}{$1... $2}g;
+        $variation =~ s{([0-9])\.([KQBNR]?[a-h][1-8])}{$1. $2}g;
+
 	my @moves = @{$pgn->moves};
 	my $pos = Chess::Rep->new;
 	my $fen = $pos->get_fen;
@@ -61,12 +66,12 @@ foreach my $fen (sort keys %positions) {
 	my $position = $positions{$fen};
 	my $moves = $position->{moves};
 	my $parent = $position->{parent};
-	my $naming_pos = $position;
-	while ($naming_pos && !exists $position->{eco}) {
-		$naming_pos = $positions{$naming_pos->{parent}};
+	my $naming_position = $position;
+	while ($naming_position && !exists $naming_position->{eco}) {
+		$naming_position = $positions{$naming_position->{parent}};
 	}
-	my $eco = $naming_pos->{eco};
-	my $variation = $naming_pos->{variation};
+	my $eco = $naming_position->{eco};
+	my $variation = $naming_position->{variation};
 	$variation =~ s{([\\'])}{\\$1}g;
 	print <<EOF;
 		'$fen' => {
