@@ -46,7 +46,7 @@ sub new {
 		__fh => $fh,
 		__filename => $filename,
 		__num_entries => $num_entries,
-	};
+	}, $class;
 }
 
 # Do a binary search in the file for the requested position.
