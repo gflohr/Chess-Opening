@@ -1,6 +1,6 @@
 #! /bin/false
 
-# Copyright (C) 2018 Guido Flohr <guido.flohr@cantanea.com>,
+# Copyright (C) 2019 Guido Flohr <guido.flohr@cantanea.com>,
 # all rights reserved.
 
 # This program is free software. It comes without any warranty, to

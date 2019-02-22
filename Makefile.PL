@@ -29,6 +29,7 @@ my %WriteMakefileArgs = (
     "integer" => 0
   },
   "TEST_REQUIRES" => {
+    "POSIX" => 0,
     "Test::More" => 0
   },
   "VERSION" => "0.1",
@@ -43,6 +44,7 @@ my %FallbackPrereqs = (
   "Fcntl" => 0,
   "Locale::TextDomain" => 0,
   "Module::Build" => "0.28",
+  "POSIX" => 0,
   "Test::More" => 0,
   "base" => 0,
   "common::sense" => 0,

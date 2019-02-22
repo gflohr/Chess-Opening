@@ -33,6 +33,7 @@ my %module_build_args = (
     "integer" => 0
   },
   "test_requires" => {
+    "POSIX" => 0,
     "Test::More" => 0
   }
 );
@@ -40,6 +41,7 @@ my %module_build_args = (
 
 my %fallback_build_requires = (
   "Module::Build" => "0.28",
+  "POSIX" => 0,
   "Test::More" => 0
 );
 
