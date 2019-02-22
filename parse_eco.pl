@@ -62,20 +62,18 @@ while ($pgn->read_game) {
 foreach my $fen (sort keys %positions) {
 	my $position = $positions{$fen};
 	my $moves = $position->{moves};
-	my $eco = $position->{eco};
-	my $variation = $position->{variation};
 	my $parent = $position->{parent};
-	if (defined $parent) {
-		$parent = "'$parent'";
-	} else {
-		$parent = 'undef';
+	my $naming_pos = $position;
+	while ($naming_pos && !exists $position->{eco}) {
+		$naming_pos = $positions{$naming_pos->{parent}};
 	}
+	my $eco = $naming_pos->{eco};
+	my $variation = $naming_pos->{variation};
 	$variation =~ s{([\\'])}{\\$1}g;
 	print <<EOF;
 		'$fen' => {
 			eco => '$eco',
 			variation => N__('$variation'),
-			parent => $parent,
 			moves => {
 EOF
 

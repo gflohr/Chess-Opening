@@ -22,6 +22,8 @@ sub new {
 
 	my $self = $class->SUPER::new($fen);
 	$self->{__parent} = $args{parent} if exists $args{parent};
+	$self->{__eco} = $args{eco} if exists $args{eco};
+	$self->{__variation} = $args{variation} if exists $args{variation};
 
 	return $self;
 }
@@ -29,4 +31,13 @@ sub new {
 sub parent {
 	shift->{__parent};
 }
+
+sub eco {
+	shift->{__eco};
+}
+
+sub variation {
+	__(shift->__variation);
+}
+
 1;

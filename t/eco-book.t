@@ -52,7 +52,6 @@ my @test_cases = (
 				'd1c2' => 'rnbqr1k1/pp3pbp/3p1np1/2pP4/4P3/2N2N2/PPQ1BPPP/R1B2RK1 b - - 7 10',
 				'f3d2' => 'rnbqr1k1/pp3pbp/3p1np1/2pP4/4P3/2N5/PP1NBPPP/R1BQ1RK1 b - - 7 10',
 		},
-		parent => 'rnbq1rk1/pp3pbp/3p1np1/2pP4/4P3/2N2N2/PP2BPPP/R1BQ1RK1 b - - 5 9',
 	},
 );
 
@@ -66,8 +65,6 @@ foreach my $tc (@test_cases) {
 	is $entry->fen, $fen;
 	is $entry->counts,  scalar keys %{$tc->{moves}}, "FEN: $fen";
 	is $entry->weights,  scalar keys %{$tc->{moves}}, "FEN: $fen";
-
-	is $entry->parent, $tc->{parent}, "FEN: $fen";
 
 	my $moves = $entry->moves;
 
