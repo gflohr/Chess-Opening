@@ -14,12 +14,12 @@ my %module_build_args = (
     "ExtUtils::MakeMaker" => 0,
     "Module::Build" => "0.28"
   },
-  "dist_abstract" => "Read chess opening books in polyglot format",
+  "dist_abstract" => "Perl library for accessing chess opening data",
   "dist_author" => [
     "Guido Flohr <guido.flohr\@cantanea.com>"
   ],
   "dist_name" => "Chess-Opening",
-  "dist_version" => "0.2",
+  "dist_version" => "0.1",
   "license" => "unrestricted",
   "module_name" => "Chess::Opening",
   "recursive_test_files" => 1,

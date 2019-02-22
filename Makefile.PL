@@ -7,7 +7,7 @@ use warnings;
 use ExtUtils::MakeMaker;
 
 my %WriteMakefileArgs = (
-  "ABSTRACT" => "Read chess opening books in polyglot format",
+  "ABSTRACT" => "Perl library for accessing chess opening data",
   "AUTHOR" => "Guido Flohr <guido.flohr\@cantanea.com>",
   "BUILD_REQUIRES" => {
     "Module::Build" => "0.28"
@@ -32,7 +32,7 @@ my %WriteMakefileArgs = (
     "POSIX" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.2",
+  "VERSION" => "0.1",
   "test" => {
     "TESTS" => "t/*.t"
   }
