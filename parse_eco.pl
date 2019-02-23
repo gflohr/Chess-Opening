@@ -61,16 +61,15 @@ while ($pgn->read_game) {
 		$fen = $pos->get_fen;
 		$positions{$parent}->{moves}->{$move} = $fen;
 		$positions{$fen}->{parent} = $parent;
+		$positions{$fen}->{history} = [@san];
 	}
 	$positions{$fen}->{eco} = $eco;
 	$positions{$fen}->{variation} = $variation;
 	$positions{$fen}->{history} = [@san];
 }
 
-$DB::single = 1;
-
 # Fill ECO code and variation for intermediate positions.
-foreach my $fen (sort by_eco keys %positions) {
+foreach my $fen (sort keys %positions) {
 	my $position = $positions{$fen};
 	my $naming_position = $position;
 	while ($naming_position && !exists $naming_position->{eco}) {
@@ -80,8 +79,7 @@ foreach my $fen (sort by_eco keys %positions) {
 	$position->{variation} = $naming_position->{variation};
 }
 
-foreach my $fen (sort {$positions{$a}->{eco} cmp $positions{$b}->{eco}}
-                 keys %positions) {
+foreach my $fen (sort by_eco keys %positions) {
 	my $position = $positions{$fen};
 	my $moves = $position->{moves};
 	my $eco = $position->{eco};
@@ -119,6 +117,8 @@ EOF
 sub by_eco {
 	return $positions{$a}->{eco} cmp $positions{$b}->{eco}
 		if $positions{$a}->{eco} cmp $positions{$b}->{eco};
-	
-	return @{$positions{$a}->{history}} <=> @{$positions{$b}->{history}};
+
+	my $history_a = join '', @{$positions{$a}->{history}};
+	my $history_b = join '', @{$positions{$b}->{history}};
+	return $history_a cmp $history_b;
 }
