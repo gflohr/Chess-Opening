@@ -105,6 +105,7 @@ foreach my $tc (@test_cases) {
 	is $entry->weights,  scalar @{$tc->{moves}}, "FEN: $fen";
 
 	is $entry->length, $tc->{length};
+	is $entry->significant, $tc->{significant};
 
 	my $moves = $entry->moves;
 	foreach my $move (@{$tc->{moves}}) {
