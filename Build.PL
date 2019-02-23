@@ -31,7 +31,8 @@ my %module_build_args = (
     "base" => 0,
     "common::sense" => 0,
     "constant" => 0,
-    "integer" => 0
+    "integer" => 0,
+    "perl" => "v5.12.0"
   },
   "test_requires" => {
     "POSIX" => 0,

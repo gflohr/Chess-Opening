@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 
-
+use 5.012000;
 
 use ExtUtils::MakeMaker;
 
@@ -18,6 +18,7 @@ my %WriteMakefileArgs = (
   },
   "DISTNAME" => "Chess-Opening",
   "LICENSE" => "unrestricted",
+  "MIN_PERL_VERSION" => "5.012000",
   "NAME" => "Chess::Opening",
   "PREREQ_PM" => {
     "Carp" => 0,
