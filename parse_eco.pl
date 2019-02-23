@@ -41,10 +41,10 @@ while ($pgn->read_game) {
 	my $tags = $pgn->tags;
 	my $eco = $tags->{ECO};
 	my $variation = $tags->{Variation};
-        
-        # Insert spaces after the periods.
-        $variation =~ s{([0-9])\.\.\.([KQBNR]?[a-h][1-8])}{$1... $2}g;
-        $variation =~ s{([0-9])\.([KQBNR]?[a-h][1-8])}{$1. $2}g;
+
+	# Insert spaces after the periods.
+	$variation =~ s{([0-9])\.\.\.([KQBNR]?[a-h][1-8])}{$1... $2}g;
+	$variation =~ s{([0-9])\.([KQBNR]?[a-h][1-8])}{$1. $2}g;
 
 	my @moves = @{$pgn->moves};
 	my $pos = Chess::Rep->new;
@@ -65,21 +65,29 @@ while ($pgn->read_game) {
 	$positions{$fen}->{history} = \@san;
 }
 
-# FIXME! Sort by ECO code and the length of the line.  That will make it a lot
-# easier to translate.
-foreach my $fen (sort keys %positions) {
+$DB::single = 1;
+
+# Fill ECO code and variation for intermediate positions.
+foreach my $fen (sort {$positions{$a}->{eco} cmp $positions{$b}->{eco}}
+                 keys %positions) {
 	my $position = $positions{$fen};
-	my $moves = $position->{moves};
-	my $parent = $position->{parent};
 	my $naming_position = $position;
 	while ($naming_position && !exists $naming_position->{eco}) {
 		$naming_position = $positions{$naming_position->{parent}};
 	}
-	my $eco = $naming_position->{eco};
-	my $variation = $naming_position->{variation};
+	$position->{eco} = $naming_position->{eco};
+	$position->{variation} = $naming_position->{variation};
+}
+
+foreach my $fen (sort {$positions{$a}->{eco} cmp $positions{$b}->{eco}}
+                 keys %positions) {
+	my $position = $positions{$fen};
+	my $moves = $position->{moves};
+	my $eco = $position->{eco};
+	my $variation = $position->{variation};
 	$variation =~ s{([\\'])}{\\$1}g;
 
-	my $comment = '# TRANSLATORS:';
+	my $comment = "# TRANSLATORS: $eco:";
 	for (my $i = 0; $i < @{$position->{history}}; ++$i) {
 			if (!($i & 1)) {
 					my $moveno = 1 + ($i >> 1);
@@ -87,7 +95,6 @@ foreach my $fen (sort keys %positions) {
 			}
 			$comment .= " $position->{history}->[$i]";
 	}
-	$comment .= "\n";
 	print <<EOF;
 		'$fen' => {
 			eco => '$eco',
