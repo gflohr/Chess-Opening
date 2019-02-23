@@ -53,30 +53,37 @@ while ($pgn->read_game) {
 	my $fen = $pos->get_fen;
 
 	my @san;
+	my @history;
 	foreach my $move (@moves) {
 		my $move_info = $pos->go_move($move) or die;
 		my $move = lc "$move_info->{from}$move_info->{to}$move_info->{promote}";
+		push @history, $move;
 		push @san, $move_info->{san};
 		my $parent = $fen;
 		$fen = $pos->get_fen;
 		$positions{$parent}->{moves}->{$move} = $fen;
 		$positions{$fen}->{parent} = $parent;
-		$positions{$fen}->{history} = [@san];
+		$positions{$fen}->{san} = [@san];
+		$positions{$fen}->{history} = [@history];
+		$positions{$fen}->{length} = @san;
 	}
 	$positions{$fen}->{eco} = $eco;
 	$positions{$fen}->{variation} = $variation;
-	$positions{$fen}->{history} = [@san];
+	$positions{$fen}->{san} = [@san];
+	$positions{$fen}->{history} = [@history];
+	$positions{$fen}->{significant} = @san;
 }
 
 # Fill ECO code and variation for intermediate positions.
 foreach my $fen (sort keys %positions) {
 	my $position = $positions{$fen};
 	my $naming_position = $position;
-	while ($naming_position && !exists $naming_position->{eco}) {
+	while ($naming_position && !exists $naming_position->{significant}) {
 		$naming_position = $positions{$naming_position->{parent}};
 	}
 	$position->{eco} = $naming_position->{eco};
 	$position->{variation} = $naming_position->{variation};
+	$position->{significant} = $naming_position->{significant};
 }
 
 foreach my $fen (sort by_eco keys %positions) {
@@ -87,18 +94,32 @@ foreach my $fen (sort by_eco keys %positions) {
 	$variation =~ s{([\\'])}{\\$1}g;
 
 	my $comment = "# TRANSLATORS: $eco:";
-	for (my $i = 0; $i < @{$position->{history}}; ++$i) {
+	for (my $i = 0; $i < @{$position->{san}}; ++$i) {
 			if (!($i & 1)) {
 					my $moveno = 1 + ($i >> 1);
 					$comment .= " $moveno.";
 			}
-			$comment .= " $position->{history}->[$i]";
+			$comment .= " $position->{san}->[$i]";
 	}
+	my $length = $position->{length} || 0;
 	print <<EOF;
 		'$fen' => {
 			eco => '$eco',
 			$comment
 			variation => N__('$variation'),
+			length => $length,
+			significant => $position->{significant},
+			history => [
+EOF
+
+	foreach my $move (@{$position->{history}}) {
+		print <<EOF;
+				'$move',
+EOF
+	}
+
+	print <<EOF;
+			],
 			moves => {
 EOF
 
