@@ -38,8 +38,12 @@ sub lookupFEN {
 	return if !exists $positions->{$fen};
 
 	my $position = $positions->{$fen};
+$DB::single = 1;
 	my $entry = Chess::Opening::ECO::Entry->new(
 		$fen,
+		length => $position->{length},
+		significant => $position->{significant},
+		history => $position->{history},
 		eco => $position->{eco},
 		variation => $position->{variation});
 

@@ -85,8 +85,8 @@ my @test_cases = (
 		eco => 'A76',
 		xeco => 'A76',
 		variation => 'Benoni: Classical, Main Line',
-		length => 42,
-		significant => 42,
+		length => 18,
+		significant => 18,
 	},
 );
 
@@ -104,8 +104,9 @@ foreach my $tc (@test_cases) {
 	is $entry->counts,  scalar @{$tc->{moves}}, "FEN: $fen";
 	is $entry->weights,  scalar @{$tc->{moves}}, "FEN: $fen";
 
-	my $moves = $entry->moves;
+	is $entry->length, $tc->{length};
 
+	my $moves = $entry->moves;
 	foreach my $move (@{$tc->{moves}}) {
 		is $moves->{$move}->move, $move, "FEN: $fen";
 		is $moves->{$move}->learn, 0, "FEN: $fen";
