@@ -22,7 +22,7 @@ my %WriteMakefileArgs = (
   "PREREQ_PM" => {
     "Carp" => 0,
     "Fcntl" => 0,
-    "IO::Seekable" => "1.20",
+    "IO::Seekable" => 0,
     "Locale::TextDomain" => 0,
     "base" => 0,
     "common::sense" => 0,
@@ -33,7 +33,7 @@ my %WriteMakefileArgs = (
     "POSIX" => 0,
     "Test::More" => 0
   },
-  "VERSION" => "0.3",
+  "VERSION" => "0.4",
   "test" => {
     "TESTS" => "t/*.t"
   }
@@ -43,7 +43,7 @@ my %WriteMakefileArgs = (
 my %FallbackPrereqs = (
   "Carp" => 0,
   "Fcntl" => 0,
-  "IO::Seekable" => "1.20",
+  "IO::Seekable" => 0,
   "Locale::TextDomain" => 0,
   "Module::Build" => "0.28",
   "POSIX" => 0,

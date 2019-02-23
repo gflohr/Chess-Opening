@@ -19,14 +19,14 @@ my %module_build_args = (
     "Guido Flohr <guido.flohr\@cantanea.com>"
   ],
   "dist_name" => "Chess-Opening",
-  "dist_version" => "0.3",
+  "dist_version" => "0.4",
   "license" => "unrestricted",
   "module_name" => "Chess::Opening",
   "recursive_test_files" => 1,
   "requires" => {
     "Carp" => 0,
     "Fcntl" => 0,
-    "IO::Seekable" => "1.20",
+    "IO::Seekable" => 0,
     "Locale::TextDomain" => 0,
     "base" => 0,
     "common::sense" => 0,
