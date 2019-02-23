@@ -30,6 +30,7 @@ ok $book->isa('Chess::Opening::Book');
 my @test_cases = (
 	{
 		fen => 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
+		history => {},
 		moves => {
 			'a2a3' => 1,
 			'a2a4' => 1,
@@ -55,18 +56,28 @@ my @test_cases = (
 		eco => 'A00',
 		xeco => 'A00a',
 		variation => 'Start',
+		length => 0,
+		significant => 0,
 	},
 	{
 		fen => 'rnbqkbnr/pppp1ppp/8/4p3/8/5P2/PPPPP1PP/RNBQKBNR w KQkq e6 0 2',
+		history => [
+			'f2f3',
+		],
 		moves => {
 			'e1f2' => 1,
 		},
 		eco => 'A00',
 		xeco => 'A00b',
 		variation => 'Barnes Opening',
+		length => 2,
+		significant => 1,
 	},
 	{
 		fen => 'rnbqr1k1/pp3pbp/3p1np1/2pP4/4P3/2N2N2/PP2BPPP/R1BQ1RK1 w - - 6 10',
+		history => [
+			'abcd'
+		],
 		moves => {
 				'd1c2' => 1,
 				'f3d2' => 1,
@@ -74,6 +85,8 @@ my @test_cases = (
 		eco => 'A76',
 		xeco => 'A76',
 		variation => 'Benoni: Classical, Main Line',
+		length => 42,
+		significant => 42,
 	},
 );
 
