@@ -19,7 +19,7 @@ use common::sense;
 use base 'Chess::Opening::Book';
 
 use Fcntl qw(:seek);
-use IO::Seekable '1.20';
+use IO::Seekable 1.20;
 
 use Chess::Opening::Book::Polyglot::Random64;
 
