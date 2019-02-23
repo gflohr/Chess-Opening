@@ -30,29 +30,29 @@ ok $book->isa('Chess::Opening::Book');
 my @test_cases = (
 	{
 		fen => 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
-		history => {},
-		moves => {
-			'a2a3' => 1,
-			'a2a4' => 1,
-			'b1a3' => 1,
-			'b1c3' => 1,
-			'b2b3' => 1,
-			'b2b4' => 1,
-			'c2c3' => 1,
-			'c2c4' => 1,
-			'd2d3' => 1,
-			'd2d4' => 1,
-			'e2e3' => 1,
-			'e2e4' => 1,
-			'f2f3' => 1,
-			'f2f4' => 1,
-			'g1f3' => 1,
-			'g1h3' => 1,
-			'g2g3' => 1,
-			'g2g4' => 1,
-			'h2h3' => 1,
-			'h2h4' => 1,
-		},
+		history => [],
+		moves => [
+			'a2a3',
+			'a2a4',
+			'b1a3',
+			'b1c3',
+			'b2b3',
+			'b2b4',
+			'c2c3',
+			'c2c4',
+			'd2d3',
+			'd2d4',
+			'e2e3',
+			'e2e4',
+			'f2f3',
+			'f2f4',
+			'g1f3',
+			'g1h3',
+			'g2g3',
+			'g2g4',
+			'h2h3',
+			'h2h4',
+		],
 		eco => 'A00',
 		xeco => 'A00a',
 		variation => 'Start',
@@ -64,9 +64,9 @@ my @test_cases = (
 		history => [
 			'f2f3',
 		],
-		moves => {
-			'e1f2' => 1,
-		},
+		moves => [
+			'e1f2',
+		],
 		eco => 'A00',
 		xeco => 'A00b',
 		variation => 'Barnes Opening',
@@ -78,10 +78,10 @@ my @test_cases = (
 		history => [
 			'abcd'
 		],
-		moves => {
-				'd1c2' => 1,
-				'f3d2' => 1,
-		},
+		moves => [
+				'd1c2',
+				'f3d2',
+		],
 		eco => 'A76',
 		xeco => 'A76',
 		variation => 'Benoni: Classical, Main Line',
@@ -101,12 +101,12 @@ foreach my $tc (@test_cases) {
 	is $entry->eco, $tc->{eco}, $fen;
 	is $entry->xeco, $tc->{xeco}, $fen;
 	is $entry->variation, $tc->{variation}, $fen;
-	is $entry->counts,  scalar keys %{$tc->{moves}}, "FEN: $fen";
-	is $entry->weights,  scalar keys %{$tc->{moves}}, "FEN: $fen";
+	is $entry->counts,  scalar @{$tc->{moves}}, "FEN: $fen";
+	is $entry->weights,  scalar @{$tc->{moves}}, "FEN: $fen";
 
 	my $moves = $entry->moves;
 
-	foreach my $move (keys %{$tc->{moves}}) {
+	foreach my $move (@{$tc->{moves}}) {
 		is $moves->{$move}->move, $move, "FEN: $fen";
 		is $moves->{$move}->learn, 0, "FEN: $fen";
 		is $moves->{$move}->count, 1, "FEN: $fen";
