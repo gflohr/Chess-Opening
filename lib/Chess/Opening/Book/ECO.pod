@@ -2,7 +2,7 @@
 
 =head1 NAME
 
-Chess::Opening::BOOK::ECO - ECO information
+Chess::Opening::Book::ECO - ECO information
 
 =head1 SYNOPSIS
 
