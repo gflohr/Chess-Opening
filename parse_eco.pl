@@ -19,6 +19,8 @@ use common::sense;
 use Chess::PGN::Parse;
 use Chess::Rep;
 
+sub by_eco;
+
 my $filename;
 
 my $filename = shift @ARGV;
@@ -50,7 +52,7 @@ while ($pgn->read_game) {
 	my $pos = Chess::Rep->new;
 	my $fen = $pos->get_fen;
 
-        my @san;
+	my @san;
 	foreach my $move (@moves) {
 		my $move_info = $pos->go_move($move) or die;
 		my $move = lc "$move_info->{from}$move_info->{to}$move_info->{promote}";
@@ -62,14 +64,13 @@ while ($pgn->read_game) {
 	}
 	$positions{$fen}->{eco} = $eco;
 	$positions{$fen}->{variation} = $variation;
-	$positions{$fen}->{history} = \@san;
+	$positions{$fen}->{history} = [@san];
 }
 
 $DB::single = 1;
 
 # Fill ECO code and variation for intermediate positions.
-foreach my $fen (sort {$positions{$a}->{eco} cmp $positions{$b}->{eco}}
-                 keys %positions) {
+foreach my $fen (sort by_eco keys %positions) {
 	my $position = $positions{$fen};
 	my $naming_position = $position;
 	while ($naming_position && !exists $naming_position->{eco}) {
@@ -113,4 +114,11 @@ EOF
 			},
 		},
 EOF
+}
+
+sub by_eco {
+	return $positions{$a}->{eco} cmp $positions{$b}->{eco}
+		if $positions{$a}->{eco} cmp $positions{$b}->{eco};
+	
+	return @{$positions{$a}->{history}} <=> @{$positions{$b}->{history}};
 }
