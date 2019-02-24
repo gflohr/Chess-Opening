@@ -67,7 +67,6 @@ sub addMove {
 	return $self;
 }
 
-sub fen { shift->{__fen} }
 sub moves { shift->{__moves} }
 sub counts { shift->{__counts} }
 sub weights { shift->{__counts} }

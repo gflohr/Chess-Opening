@@ -20,6 +20,7 @@ use Chess::PGN::Parse;
 use Chess::Rep;
 
 sub by_eco;
+sub significant;
 
 my $filename;
 
@@ -50,7 +51,7 @@ while ($pgn->read_game) {
 
 	my @moves = @{$pgn->moves};
 	my $pos = Chess::Rep->new;
-	my $fen = $pos->get_fen;
+	my $fen = significant $pos->get_fen;
 
 	my @san;
 	my @history;
@@ -60,7 +61,7 @@ while ($pgn->read_game) {
 		push @history, $move;
 		push @san, $move_info->{san};
 		my $parent = $fen;
-		$fen = $pos->get_fen;
+		$fen = significant $pos->get_fen;
 		$positions{$parent}->{moves}->{$move} = $fen;
 		$positions{$fen}->{parent} = $parent;
 		$positions{$fen}->{san} = [@san];
@@ -128,4 +129,12 @@ sub by_eco {
 	my $history_a = join '', @{$positions{$a}->{history}};
 	my $history_b = join '', @{$positions{$b}->{history}};
 	return $history_a cmp $history_b;
+}
+
+sub significant {
+	my ($fen) = @_;
+
+	$fen =~ s/[ \011-\015]+[0-9]+[ \011-\015]+[0-9]+[ \011-\015]*$//;
+
+	return $fen;
 }
