@@ -10294,7 +10294,7 @@ msgstr ""
 #: ../lib/Chess/Opening/ECO.pm:20372 ../lib/Chess/Opening/ECO.pm:20380
 #: ../lib/Chess/Opening/ECO.pm:20388
 msgid "King's Pawn"
-msgstr ""
+msgstr "Königsbauerneröffnung"
 
 #. TRANSLATORS: B00a: 1. e4 Nh6 2. d4 g6 3. c4 f6
 #: ../lib/Chess/Opening/ECO.pm:20396
@@ -24072,7 +24072,7 @@ msgstr ""
 #: ../lib/Chess/Opening/ECO.pm:45544 ../lib/Chess/Opening/ECO.pm:50528
 #: ../lib/Chess/Opening/ECO.pm:52464
 msgid "Open Game"
-msgstr ""
+msgstr "Offenes Spiel"
 
 #. TRANSLATORS: C20: 1. e4 e5 2. Bb5
 #: ../lib/Chess/Opening/ECO.pm:45564
@@ -26307,17 +26307,17 @@ msgstr ""
 #. TRANSLATORS: C40j: 1. e4 e5 2. Nf3 f5
 #: ../lib/Chess/Opening/ECO.pm:50627
 msgid "Latvian Gambit"
-msgstr ""
+msgstr "Lettisches Gambit"
 
 #. TRANSLATORS: C40k: 1. e4 e5 2. Nf3 f5 3. d3
 #: ../lib/Chess/Opening/ECO.pm:50640
 msgid "Latvian Gambit: 3. d3"
-msgstr ""
+msgstr "Lettisches Gambit: 3. d3"
 
 #. TRANSLATORS: C40l: 1. e4 e5 2. Nf3 f5 3. Nc3
 #: ../lib/Chess/Opening/ECO.pm:50647
 msgid "Latvian Gambit: 3. Nc3"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Sc3"
 
 #. TRANSLATORS: C40m: 1. e4 e5 2. Nf3 f5 3. d4
 #. TRANSLATORS: C40m: 1. e4 e5 2. Nf3 f5 3. d4 fxe4
@@ -26325,48 +26325,48 @@ msgstr ""
 #: ../lib/Chess/Opening/ECO.pm:50654 ../lib/Chess/Opening/ECO.pm:50662
 #: ../lib/Chess/Opening/ECO.pm:50670
 msgid "Latvian Gambit: 3. d4"
-msgstr ""
+msgstr "Lettisches Gambit: 3. d4"
 
 #. TRANSLATORS: C40m: 1. e4 e5 2. Nf3 f5 3. d4 fxe4 4. Nxe5 Nf6
 #: ../lib/Chess/Opening/ECO.pm:50678
 msgid "Latvian Gambit: 3. d4 fxe4 5.Nxe5 Nf6"
-msgstr ""
+msgstr "Lettisches Gambit: 3. d4 fxe4 5. Sxe5 Sf6"
 
 #. TRANSLATORS: C40n: 1. e4 e5 2. Nf3 f5 3. exf5
 #: ../lib/Chess/Opening/ECO.pm:50685
 msgid "Latvian Gambit: 3.exf5"
-msgstr ""
+msgstr "Lettisches Gambit; 3. exf5"
 
 #. TRANSLATORS: C40n: 1. e4 e5 2. Nf3 f5 3. exf5 e4
 #: ../lib/Chess/Opening/ECO.pm:50693
 msgid "Latvian Gambit: 3.exf5 e4"
-msgstr ""
+msgstr "Lettisches Gambit: 3. exf5 e4"
 
 #. TRANSLATORS: C40o: 1. e4 e5 2. Nf3 f5 3. Bc4
 #: ../lib/Chess/Opening/ECO.pm:50700
 msgid "Latvian Gambit: 3. Bc4"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Lc4"
 
 #. TRANSLATORS: C40o: 1. e4 e5 2. Nf3 f5 3. Bc4 Nf6
 #: ../lib/Chess/Opening/ECO.pm:50710
 msgid "Latvian Gambit: Morgado Variation"
-msgstr ""
+msgstr "Lettisches Gambit: Morgado-Variante"
 
 #. TRANSLATORS: C40o: 1. e4 e5 2. Nf3 f5 3. Bc4 b5
 #: ../lib/Chess/Opening/ECO.pm:50717
 msgid "Latvian Gambit: Strautins Variation"
-msgstr ""
+msgstr "Lettisches Gambit: Strautin-Variante"
 
 #. TRANSLATORS: C40p: 1. e4 e5 2. Nf3 f5 3. Bc4 fxe4
 #. TRANSLATORS: C40p: 1. e4 e5 2. Nf3 f5 3. Bc4 fxe4 4. Nxe5
 #: ../lib/Chess/Opening/ECO.pm:50724 ../lib/Chess/Opening/ECO.pm:50732
 msgid "Latvian Gambit: 3. Bc4 fxe4"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Lc4 fxe4"
 
 #. TRANSLATORS: C40p: 1. e4 e5 2. Nf3 f5 3. Bc4 fxe4 4. Nxe5 Nf6
 #: ../lib/Chess/Opening/ECO.pm:50742
 msgid "Latvian: Blackburne Variation (Corkscrew Countergambit)"
-msgstr ""
+msgstr "Lettisches Gambit: Blackburne-Variante (Corkscrew-Gegengambit)"
 
 #. TRANSLATORS: C40p: 1. e4 e5 2. Nf3 f5 3. Bc4 fxe4 4. Nxe5 d5
 #. TRANSLATORS: C40p: 1. e4 e5 2. Nf3 f5 3. Bc4 fxe4 4. Nxe5 d5 5. Qh5+
@@ -26375,17 +26375,17 @@ msgstr ""
 #: ../lib/Chess/Opening/ECO.pm:50749 ../lib/Chess/Opening/ECO.pm:50757
 #: ../lib/Chess/Opening/ECO.pm:50765 ../lib/Chess/Opening/ECO.pm:50773
 msgid "Latvian Gambit: Svedenborg Variation"
-msgstr ""
+msgstr "Lettisches Gambit: Svedenborg-Variante"
 
 #. TRANSLATORS: C40p: 1. e4 e5 2. Nf3 f5 3. Bc4 fxe4 4. Nxe5 d5 5. Qh5+ g6 6. Nxg6 Nf6
 #: ../lib/Chess/Opening/ECO.pm:50782
 msgid "Latvian Gambit: Svedenborg, 6.Nxg6 Nf6"
-msgstr ""
+msgstr "Lettisches Gambit: Svedenborg-Variante, 6. Sxg6 Sf6"
 
 #. TRANSLATORS: C40p: 1. e4 e5 2. Nf3 f5 3. Bc4 fxe4 4. Nxe5 d5 5. Qh5+ g6 6. Nxg6 hxg6
 #: ../lib/Chess/Opening/ECO.pm:50789
 msgid "Latvian Gambit: Svedenborg, 6.Nxg6 hxg6"
-msgstr ""
+msgstr "Lettisches Gambit: Svedenborg-Variante, 6. Sxg6 hxg6"
 
 #. TRANSLATORS: C40q: 1. e4 e5 2. Nf3 f5 3. Bc4 fxe4 4. Nxe5 Qg5
 #. TRANSLATORS: C40q: 1. e4 e5 2. Nf3 f5 3. Bc4 fxe4 4. Nxe5 Qg5 5. d4
@@ -26397,72 +26397,72 @@ msgstr ""
 #: ../lib/Chess/Opening/ECO.pm:50812 ../lib/Chess/Opening/ECO.pm:50820
 #: ../lib/Chess/Opening/ECO.pm:50828 ../lib/Chess/Opening/ECO.pm:50836
 msgid "Latvian Gambit: Poisoned Pawn Variation"
-msgstr ""
+msgstr "Lettisches Gambit mit vergiftetem Bauer"
 
 #. TRANSLATORS: C40q: 1. e4 e5 2. Nf3 f5 3. Bc4 fxe4 4. Nxe5 Qg5 5. d4 Qxg2 6. Qh5+ g6 7. Bf7+ Kd8
 #: ../lib/Chess/Opening/ECO.pm:50844
 msgid "Latvian Gambit: Poisoned Pawn, Main Line"
-msgstr ""
+msgstr "Lettisches Gambit mit vergiftetem Bauer, Hauptlinie"
 
 #. TRANSLATORS: C40r: 1. e4 e5 2. Nf3 f5 3. Nxe5
 #: ../lib/Chess/Opening/ECO.pm:50851
 msgid "Latvian Gambit: 3.Nxe5"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Sxe5"
 
 #. TRANSLATORS: C40s: 1. e4 e5 2. Nf3 f5 3. Nxe5 Nc6
 #: ../lib/Chess/Opening/ECO.pm:50860
 msgid "Latvian Gambit: 3.Nxe5 Nc6"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Sxe5 Sc6"
 
 #. TRANSLATORS: C40t: 1. e4 e5 2. Nf3 f5 3. Nxe5 Qf6
 #: ../lib/Chess/Opening/ECO.pm:50867
 msgid "Latvian Gambit: 3.Nxe5 Qf6"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Sxe5 Df6"
 
 #. TRANSLATORS: C40t: 1. e4 e5 2. Nf3 f5 3. Nxe5 Qf6 4. Nc4
 #: ../lib/Chess/Opening/ECO.pm:50876
 msgid "Latvian Gambit: 3.Nxe5 Qf6 4. Nc4"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Sxe5 Df6 4. Sc4"
 
 #. TRANSLATORS: C40u: 1. e4 e5 2. Nf3 f5 3. Nxe5 Qf6 4. d4
 #: ../lib/Chess/Opening/ECO.pm:50883
 msgid "Latvian Gambit: 3.Nxe5 Qf6 4. d4"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Sxe5 Df6 4. d4"
 
 #. TRANSLATORS: C40u: 1. e4 e5 2. Nf3 f5 3. Nxe5 Qf6 4. d4 d6
 #: ../lib/Chess/Opening/ECO.pm:50891
 msgid "Latvian Gambit: 3.Nxe5 Qf6 4. d4 d6"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Sxe5 Df6 4. d4 d6"
 
 #. TRANSLATORS: C40u: 1. e4 e5 2. Nf3 f5 3. Nxe5 Qf6 4. d4 d6 5. Nc4
 #: ../lib/Chess/Opening/ECO.pm:50899
 msgid "Latvian Gambit: 3.Nxe5 Qf6 4. d4 d6 5. Nc4"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Sxe5 Df6 4. d4 d6 5. Sc4"
 
 #. TRANSLATORS: C40u: 1. e4 e5 2. Nf3 f5 3. Nxe5 Qf6 4. d4 d6 5. Nc4 fxe4
 #: ../lib/Chess/Opening/ECO.pm:50907
 msgid "Latvian Gambit: 3.Nxe5 Qf6 4. d4 d6 5. Nc4 fxe4"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Sxe5 Df6 4. d4 d6 5. Sc4 fxe4"
 
 #. TRANSLATORS: C40v: 1. e4 e5 2. Nf3 f5 3. Nxe5 Qf6 4. d4 d6 5. Nc4 fxe4 6. Be2
 #: ../lib/Chess/Opening/ECO.pm:50917
 msgid "Latvian Gambit: 3.Nxe5 Qf6 4. d4 d6 5. Nc4 fxe4 6. Be2"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Sxe5 Df6 4. d4 d6 5. Sc4 fxe4 6. Be2"
 
 #. TRANSLATORS: C40w: 1. e4 e5 2. Nf3 f5 3. Nxe5 Qf6 4. d4 d6 5. Nc4 fxe4 6. Ne3
 #: ../lib/Chess/Opening/ECO.pm:50924
 msgid "Latvian Gambit: Nimzowitsch Variation"
-msgstr ""
+msgstr "Lettisches Gambit: Nimzowitsch-Variante"
 
 #. TRANSLATORS: C40x: 1. e4 e5 2. Nf3 f5 3. Nxe5 Qf6 4. d4 d6 5. Nc4 fxe4 6. Nc3
 #: ../lib/Chess/Opening/ECO.pm:50931
 msgid "Latvian Gambit: 3.Nxe5 Qf6 4. d4 d6 5. Nc4 fxe4 6. Nc3"
-msgstr ""
+msgstr "Lettisches Gambit: 3. Sxe5 Df6 4. d4 d6 5. Sc4 fxe4 6. Nc3"
 
 #. TRANSLATORS: C41a: 1. e4 e5 2. Nf3 d6
 #: ../lib/Chess/Opening/ECO.pm:50938
 msgid "Philidor Defence"
-msgstr ""
+msgstr "Philidor-Verteidigung"
 
 #. TRANSLATORS: C41b: 1. e4 e5 2. Nf3 d6 3. Bc4
 #. TRANSLATORS: C41b: 1. e4 e5 2. Nf3 d6 3. Bc4 Be7
