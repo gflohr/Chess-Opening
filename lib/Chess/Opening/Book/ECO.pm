@@ -35,9 +35,9 @@ sub lookupFEN {
 
 	my $positions = Chess::Opening::ECO->positions;
 
-	# Ignore half move count and move number for lookup so that transpositions
-	# work correctly.
-	$fen =~ s/[ \011-\015]+[1-9][0-9]*[ \011-\015]+[1-9][0-9]*[ \011-\015]*$//;
+	# Ignore en passant field, half move count and move number for lookup so
+	# that transpositions work correctly.
+	$fen =~ s/[ \011-\015]+[-a-h1-8]+[ \011-\015]+[0-9]+[ \011-\015]+[0-9]+[ \011-\015]*$//;
 
 	return if !exists $positions->{$fen};
 
