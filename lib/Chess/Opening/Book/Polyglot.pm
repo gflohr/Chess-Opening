@@ -18,12 +18,13 @@ use common::sense;
 
 use 5.12.0;
 
-use base 'Chess::Opening::Book';
-
+use Locale::TextDomain qw(com.cantanea.Chess-Opening);
 use Fcntl qw(:seek);
 use IO::Seekable 1.20;
 
 use Chess::Opening::Book::Polyglot::Random64;
+
+use base 'Chess::Opening::Book';
 
 sub new {
 	my ($class, $filename) = @_;
