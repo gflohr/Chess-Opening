@@ -30,7 +30,6 @@ ok $book->isa('Chess::Opening::Book');
 my @test_cases = (
 	{
 		fen => 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1',
-		history => [],
 		moves => [
 			'a2a3',
 			'a2a4',
@@ -56,28 +55,18 @@ my @test_cases = (
 		eco => 'A00',
 		xeco => 'A00a',
 		variation => 'Start',
-		length => 0,
-		significant => 0,
 	},
 	{
 		fen => 'rnbqkbnr/pppp1ppp/8/4p3/8/5P2/PPPPP1PP/RNBQKBNR w KQkq e6 0 2',
-		history => [
-			'f2f3',
-		],
 		moves => [
 			'e1f2',
 		],
 		eco => 'A00',
 		xeco => 'A00b',
 		variation => 'Barnes Opening',
-		length => 2,
-		significant => 1,
 	},
 	{
 		fen => 'rnbqr1k1/pp3pbp/3p1np1/2pP4/4P3/2N2N2/PP2BPPP/R1BQ1RK1 w - - 6 10',
-		history => [
-			'abcd'
-		],
 		moves => [
 				'd1c2',
 				'f3d2',
@@ -85,8 +74,6 @@ my @test_cases = (
 		eco => 'A76',
 		xeco => 'A76',
 		variation => 'Benoni: Classical, Main Line',
-		length => 18,
-		significant => 18,
 	},
 );
 
@@ -103,9 +90,6 @@ foreach my $tc (@test_cases) {
 	is $entry->variation, $tc->{variation}, $fen;
 	is $entry->counts,  scalar @{$tc->{moves}}, "FEN: $fen";
 	is $entry->weights,  scalar @{$tc->{moves}}, "FEN: $fen";
-
-	is $entry->length, $tc->{length};
-	is $entry->significant, $tc->{significant};
 
 	my $moves = $entry->moves;
 	foreach my $move (@{$tc->{moves}}) {

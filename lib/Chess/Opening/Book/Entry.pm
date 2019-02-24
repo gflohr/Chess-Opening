@@ -27,6 +27,7 @@ sub new {
 		__count => 0,
 		__length => -1,
 		__significant => -1,
+		__history => [],
 	}, $class;
 
 	$self->{__length} = $args{length} if exists $args{length};
@@ -70,8 +71,5 @@ sub fen { shift->{__fen} }
 sub moves { shift->{__moves} }
 sub counts { shift->{__counts} }
 sub weights { shift->{__counts} }
-sub length { shift->{__length} }
-sub significant { shift->{__significant} }
-sub history { shift->{__history} }
 
 1;

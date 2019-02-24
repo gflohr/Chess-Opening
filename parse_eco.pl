@@ -65,7 +65,6 @@ while ($pgn->read_game) {
 		$positions{$fen}->{parent} = $parent;
 		$positions{$fen}->{san} = [@san];
 		$positions{$fen}->{history} = [@history];
-		$positions{$fen}->{length} = @san;
 	}
 	$positions{$fen}->{eco} = $eco;
 	$positions{$fen}->{variation} = $variation;
@@ -101,25 +100,12 @@ foreach my $fen (sort by_eco keys %positions) {
 			}
 			$comment .= " $position->{san}->[$i]";
 	}
-	my $length = $position->{length} || 0;
+
 	print <<EOF;
 		'$fen' => {
 			eco => '$eco',
 			$comment
 			variation => N__('$variation'),
-			length => $length,
-			significant => $position->{significant},
-			history => [
-EOF
-
-	foreach my $move (@{$position->{history}}) {
-		print <<EOF;
-				'$move',
-EOF
-	}
-
-	print <<EOF;
-			],
 			moves => {
 EOF
 
