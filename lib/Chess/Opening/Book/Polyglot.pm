@@ -160,8 +160,8 @@ sub _getKey {
 			$pawn = 'P';
 		} else {
 			@pawns = (
-				chr($ep_char - 1) . '4',
-				chr($ep_char + 1) . '4',
+				chr($ep_char - 1) . '3',
+				chr($ep_char + 1) . '3',
 			);
 			$pawn = 'p';
 		}
