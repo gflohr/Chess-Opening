@@ -65,7 +65,7 @@ sub _findKey {
 	return if !$self->{__num_entries};
 
 	my $left = 0;
-	my $right = $self->{__num_entries};
+	my $right = $self->{__num_entries} - 1;
 
 	my $found = '';
 	my $mid;
